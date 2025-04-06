@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-v4wbndbyhd61b!loh$ubh(zd!^smx3^#k!ddz^4&#e!t26=5k@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['vercel.app']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -121,17 +121,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-import os
-
-# Other settings...
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Other settings...
-
 
 STATIC_URL = '/static/'
 
@@ -139,17 +128,3 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-
-
-
-AWS_ACCESS_KEY_ID = 'AKIAWIWOPHBI7XUHAHVY'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'weatherpred'
-AWS_S3_SIGNATURE_NAME = 's3v4',
-AWS_S3_REGION_NAME = 'eu-north-1'
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL =  None
-AWS_S3_VERITY = True
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'        
