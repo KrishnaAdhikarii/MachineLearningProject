@@ -127,7 +127,7 @@ def weather_view(request):
             ("W", 258.75, 281.25), ("WNW", 281.25, 303.75), ("NW", 303.75, 326.25),
             ("NNW", 326.25, 348.75)
         ]
-        compass_direction = next(point for point, start, end in compass_points if start <= wind_deg < end)
+        compass_direction = next((point for point, start, end in compass_points if start <= wind_deg < end), "Unknown")
         compass_direction_encoded = le.transform([compass_direction])[0] if compass_direction in le.classes_ else -1
 
         current_data = {
