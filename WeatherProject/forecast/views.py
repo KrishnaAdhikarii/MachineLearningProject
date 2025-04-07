@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.conf import settings
 import requests
 import pandas as pd
 import numpy as np
@@ -18,6 +19,12 @@ def get_current_weather(city):
     url = f"{BASE_URL}weather?q={city}&appid={API_KEY}&units=metric"
     response = requests.get(url)
     data = response.json()
+    if response.status_code != 200:
+        print("API Error:", data)
+        return {
+            'city': city,
+            'error': data.get('message', 'Failed to fetch weather data')
+        }
 
     return {
         'city': data['name'],
@@ -103,7 +110,7 @@ def weather_view(request):
         current_weather = get_current_weather(city)
 
         # Load historical data
-        csv_path = os.path.join('/Users/slp/Machine Learning Project /weather.csv')  # Ensure correct path
+        csv_path = os.path.join(settings.BASE_DIR, 'weather.csv')  # Ensure correct path
         historical_data = read_historical_data(csv_path)
 
         # Prepare and train the rain prediction model
