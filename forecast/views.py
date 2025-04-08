@@ -35,7 +35,7 @@ def get_current_weather(city):
         'humidity': round(data['main']['humidity']),
         'description': data['weather'][0]['description'],
         'country': data['sys']['country'],
-        'wind_gust_dir': data['wind']['deg'],
+        'wind_gust_dir': data['wind'].get('deg'),
         'pressure': data['main']['pressure'],
         'Wind_Gust_Speed': data['wind']['speed'],
         'clouds': data['clouds']['all'],
@@ -118,7 +118,7 @@ def weather_view(request):
         rain_model = train_rain_model(X, y)
 
         # Map wind direction to compass points
-        wind_deg = current_weather['wind_gust_dir'] % 360
+        wind_deg = current_weather.get('wind_gust_dir', 0) % 360
         compass_points = [
             ("N", 0, 11.25), ("NNE", 11.25, 33.75), ("NE", 33.75, 56.25),
             ("ENE", 56.25, 78.75), ("E", 78.75, 101.25), ("ESE", 101.25, 123.75),
