@@ -9,27 +9,24 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
     <title>Weather Forecast</title>
     <style>
-        /* Horizontal Forecast Container (No Scrolling, Clean Layout) */
         .forecast {
-            display: flex; /* Align items horizontally */
-            gap: 15px;     /* Space between items */
-            justify-content: flex-start;  /* Ensure they start from the left */
-            flex-wrap: nowrap; /* Ensure items don't wrap onto the next line */
-            margin-top: 20px; /* Space between primary content and forecast */
-            overflow-x: hidden; /* Prevent any overflow */
+            display: flex;
+            gap: 15px;
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+            margin-top: 20px;
+            overflow-x: hidden;
         }
 
-        /* Forecast Item Style */
         .forecast-item {
-            width: 150px; /* Fixed width for each forecast item */
-            background-color: #ffffff00; /* Background color for each item */
-            border-radius: 8px; /* Rounded corners */
-            padding: 10px;  /* Inner padding */
-            text-align: center;  /* Centers text inside forecast item */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow effect */
+            width: 150px;
+            background-color: #ffffff00;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        /* Forecast Item Text Styles */
         .forecast-time {
             font-size: 1.1em;
             font-weight: bold;
@@ -82,7 +79,7 @@
                     <span class="day-stats__temperature_value">{{ current_temp }}°</span>
                 </h2>
                 <h3 class="day-stats__feelslike">
-                    Feels like:&nbsp&nbsp<span class="dry-stats__temperature_value">{{ feels_like }}°</span>
+                    Feels like:&nbsp&nbsp;<span class="dry-stats__temperature_value">{{ feels_like }}°</span>
                 </h3>  
                 <ul class="day-stats__conditions">
                     <li>
@@ -117,11 +114,11 @@
             </div>
             <p class="weather__primary-stats">
                Wind
-               <span class="weatherWindKph">{{ Wind }}</span> kilometers per hour. Pressure 
+               <span class="weatherWindKph">{{ wind }}</span> kilometers per hour. Pressure 
                is <span class="weatherPressure">{{ pressure }} </span> mb. Visibility is
                <span class="weatherSnow">{{ visibility }} </span> .Maximum temperature is
                <span class="weatherMaxTemp">{{ MaxTemp }} </span> .Minimum temperature is
-               <span class="weatherMinTemp">{{ MTemp }} </span>  
+               <span class="weatherMinTemp">{{ MinTemp }} </span>  
             </p>
 
             <ul class="forecast"> 
