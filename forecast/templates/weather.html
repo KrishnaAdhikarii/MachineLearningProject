@@ -8,54 +8,10 @@
     <link rel="icon" href="{% static 'img/site-pic.ico' %}" type="image/icon type"> 
     <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
     <title>Weather Forecast</title>
-    <style>
-        /* Horizontal Forecast Container (No Scrolling, Clean Layout) */
-        .forecast {
-            display: flex; /* Align items horizontally */
-            gap: 15px;     /* Space between items */
-            justify-content: flex-start;  /* Ensure they start from the left */
-            flex-wrap: nowrap; /* Ensure items don't wrap onto the next line */
-            margin-top: 20px; /* Space between primary content and forecast */
-            overflow-x: hidden; /* Prevent any overflow */
-        }
-
-        /* Forecast Item Style */
-        .forecast-item {
-            width: 150px; /* Fixed width for each forecast item */
-            background-color: #ffffff00; /* Background color for each item */
-            border-radius: 8px; /* Rounded corners */
-            padding: 10px;  /* Inner padding */
-            text-align: center;  /* Centers text inside forecast item */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow effect */
-        }
-
-        /* Forecast Item Text Styles */
-        .forecast-time {
-            font-size: 1.1em;
-            font-weight: bold;
-            color:white; 
-            margin-bottom: 5px;
-        }
-
-        .forecast-temperature {
-            font-size: 1.3em;
-            color: white;  
-            margin-bottom: 5px;
-        }
-
-        .forecastWindText {
-            font-size: 1em;
-            color: white;
-        }
-
-        .forecast-humidityValue {
-            font-weight: bold;
-            color: white; 
-        }
-    </style>
 </head>
 <body>
     <main class="{{ description }}">
+        <!-- Left Section (Side Container) -->
         <section class="side-container">
             <form method="POST">
                 {% csrf_token %}
@@ -87,14 +43,12 @@
                 <ul class="day-stats__conditions">
                     <li>
                         <p class="day-stats__condition">
-                            <span class="day-stats__conditions">{{ humidity }}</span>%
-                        </p>
+                            <span class="day-stats__conditions">{{ humidity }}</span>%</p>
                         <p class="day-stats__condition_text">of humidity</p>
                     </li>
                     <li>
                         <p class="day-stats__condition">
-                            <span class="day-stats__clouds">{{ clouds }}</span>%
-                        </p>
+                            <span class="day-stats__clouds">{{ clouds }}</span>%</p>
                         <p class="day-stats__condition_text">of Clouds</p>
                     </li>
                 </ul>  
@@ -102,6 +56,7 @@
             <img src="{% static 'img/side-blur.png' %}" class="side-blur" alt="blur"/>    
         </section>
 
+        <!-- Right Section (Main Content) -->
         <section class="main-container">
             <h4 class="secondary-title">Weather Forecast</h4>
             <h1 class="weather__primary-title">{{ description }}</h1>
@@ -117,11 +72,11 @@
             </div>
             <p class="weather__primary-stats">
                Wind
-               <span class="weatherWindKph">{{ Wind }}</span> kilometers per hour. Pressure 
+               <span class="weatherWindKph">{{ wind }}</span> kilometers per hour. Pressure 
                is <span class="weatherPressure">{{ pressure }} </span> mb. Visibility is
                <span class="weatherSnow">{{ visibility }} </span> .Maximum temperature is
                <span class="weatherMaxTemp">{{ MaxTemp }} </span> .Minimum temperature is
-               <span class="weatherMinTemp">{{ MTemp }} </span>  
+               <span class="weatherMinTemp">{{ MinTemp }} </span>  
             </p>
 
             <ul class="forecast"> 
